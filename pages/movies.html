@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOVIESTACK</title>
+    <link rel="shortcut icon" href="../images/Moviestack_favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+
+<body class="bg-neutral-900">
+    <div id="app">
+        <header class="flex flex-col items-center md:justify-between md:text-2xl md:flex-row">
+            <div class="flex items-center gap-2">
+                <img src="../images/claqueta.png" alt="">
+                <h1 class="text-white">MOVIESTACK</h1>
+            </div>
+            <nav class="flex gap-6 text-slate-300">
+                <a href="../index.html">HOME</a>
+                <a href="./movies.html">MOVIES</a>
+                <a href="./favs.html">FAVS</a>
+            </nav>
+        </header>
+
+        <main>
+            <img class="m-10 md:h-[500px] md:w-full md:object-cover imagen" src="../images/bannerMovie.jpg" alt="">
+            <div class="flex flex-col gap-4 md:flex md:flex-row md:gap-20">
+
+                <select class="flex flex-col md:flex md:w-[200px] md:p-2" v-on:input="filtrarPorGenero">
+                    <option class=" rounded-lg" value="genero">All Movies</option>
+                    <template v-if="generos.length > 0" v-for="genero of generos">
+                        <option v-bind:value="genero">{{genero}}</option>
+                    </template>
+                </select>
+
+                <input class="p-2" type="text" placeholder="Search by name" value="" v-on:input="filtrarPorNombre">
+            </div>
+
+
+
+            <div class="flex flex-wrap p-6 gap-4 justify-center" id="cartas">
+                <template v-if="filtros.length > 0" v-for="movie in filtros">
+                    <article data-id={{movie.id}}
+                        class="art h-[450px] min-w-[300px] w-1/5 border-2 border-black rounded-lg bg-white flex flex-col gap-5 px-5 pb-5">
+                        <img class="pt-3 h-[200px]" :src="`https://moviestack.onrender.com/static/` + movie.image"
+                            alt="">
+                        <h2 class="text-black text-center">{{movie.title}}</h2>
+                        <p class="text-black text-center line-clamp-3">{{movie.overview}}...</p>
+                        <a class="flex justify-center p-1 rounded-lg bg-violet-800 text-white"
+                           v-bind:href="'details.html?id='+ movie.id">Details</a>
+                        <button v-on:click="fav(movie)" data-accion="add" data-id="{{movie.id}}"
+                            class="add p-1 bg-green-600 rounded-lg text-white">Add to Favorites</button>
+                    </article>
+                </template>
+            </div>
+
+
+        </main>
+
+        <footer>
+            <h3 class="text-slate-300 text-xl">MindHub-Cohort N52</h3>
+        </footer>
+    </div>
+    <script src="../js/tailwind.config.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details</title>
+    <link rel="shortcut icon" href="../images/Moviestack_favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-neutral-900">
+    <header class="flex flex-col items-center md:justify-between md:text-2xl md:flex-row">
+        <div class="flex items-center gap-2">
+            <img src="../images/claqueta.png" alt="">
+            <h1 class="text-white">MOVIESTACK</h1>
+        </div>
+        <nav class="flex gap-6 text-slate-300">
+            <a href="../index.html">HOME</a>
+            <a href="./movies.html">MOVIES</a>
+            <a href="./favs.html">FAVS</a>
+        </nav>
+    </header>
+
+    <main>
+        <div id="app" class="flex flex-col gap-20 md:flex md:flex-row">
+            <template v-if="movie !== '' ">
+                <div class="">
+                    <img class="pt-3 h-[300px]" v-bind:src="'https://moviestack.onrender.com/static/'+ movie.image" alt="">
+                    <table class=" h-[100px] w-[400px] border-[2px] bg-white border-black text-center justify-center">
+                        <tr>
+                            <td>original lenguage</td>
+                            <td>{{movie.original_language}}</td>
+                        </tr>
+                        <tr>
+                            <td>release data</td>
+                            <td>{{movie.release_date}}</td>
+                        </tr>
+                        <tr>
+                            <td>runtime</td>
+                            <td>{{movie.runtime}}</td>
+                        </tr>
+                        <tr>
+                            <td>status</td>
+                            <td>{{movie.status}}</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <section class="flex flex-col gap-3 w-[450px]">
+                    <h2 class="text-white">{{movie.title}}</h2>
+                    <h3 class="text-white">{{movie.tagline}}</h3>
+                    <h4 class="text-white">{movie.genres}</h4>
+                    <p class="text-white">{{movie.overview}}</p>
+                    <table class="h-[100px] w-[400px] bg-white border-[2px] border-black text-center">
+                        <tr>
+                            <td>vote average</td>
+                            <td>{{movie.vote_average}}</td>
+                        </tr>
+                        <tr>
+                            <td>budget</td>
+                            <td>{{movie.budget}}</td>
+                        </tr>
+                        <tr>
+                            <td>revenue</td>
+                            <td>{{movie.revenue}}</td>
+                        </tr>
+                    </table>
+                </section>
+            </template>
+        </div>
+    </main>
+
+    <footer>
+        <h3 class="text-slate-300 text-xl">MindHub-Cohort N52</h3>
+    </footer>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="../js/tailwind.config.js"></script>
+    <script src="../js/details.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favs</title>
+    <link rel="shortcut icon" href="../images/Moviestack_favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-neutral-900">
+    <header class="flex flex-col items-center md:justify-between md:text-2xl md:flex-row">
+        <div class="flex items-center gap-2">
+            <img src="../images/claqueta.png" alt="">
+            <h1 class="text-white">MOVIESTACK</h1>
+        </div>
+        <nav class="flex gap-6 text-slate-300">
+            <a href="../index.html">HOME</a>
+            <a href="./movies.html">MOVIES</a>
+            <a href="./pages/favs.html">FAVS</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="flex flex-wrap p-6 gap-4 justify-center">
+            <article class="h-[350px] min-w-[300px] w-1/5 border-2 border-black rounded-lg bg-white flex flex-col gap-5 px-5 pb-5 items-center">
+                <img class="pt-3 h-[200px]" src="${urlImage1}" alt="">
+                <h2 class="text-black text-center">${objeto.title}</h2>
+                <button data-accion="borrar" data-id="${objeto.id}" class="add p-1 bg-red-800 rounded-lg text-white">Remove</button>
+            </article>
+        </div>
+    </main>
+
+    <footer>
+        <h3 class="text-slate-300 text-xl">MindHub-Cohort N52</h3>
+    </footer>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="../tailwindconfig.js"></script>
+    <script src="../js/favorites.js"></script>
+</body>
+
+</html>

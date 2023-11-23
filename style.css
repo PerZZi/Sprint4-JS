@@ -1,0 +1,35 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header,footer{
+    display: flex;
+    align-items: center;
+    padding: 0 2rem;
+    background-color: rgb(46 16 101);
+    min-height: 4rem;
+}
+
+header {
+    justify-content: space-between;
+}
+
+footer {
+    justify-content: center;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+}

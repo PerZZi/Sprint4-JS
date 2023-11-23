@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOVIESTACK</title>
+    <link rel="shortcut icon" href="./images/Moviestack_favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-neutral-900">
+    <header class="flex flex-col items-center md:justify-between md:text-2xl md:flex-row">
+        <div class="flex items-center gap-2">
+            <img src="./images/claqueta.png" alt="">
+            <h1 class="text-white">MOVIESTACK</h1>
+        </div>
+        <nav class="flex gap-6 text-slate-300">
+            <a href="./index.html">HOME</a>
+            <a href="./pages/movies.html">MOVIES</a>
+            <a href="./pages/favs.html">FAVS</a>
+        </nav>
+    </header>
+    <main class="p-10 gap-4">
+        <img class="w-full md:w-10/12" src="./images/bannerMovie.jpg" alt="">
+        <div class="flex flex-col items-center gap-6">
+            <p class="text-white text-center">Welcome to our MovieStrack! Here on our cinema page, you will explore a
+                world full of emotions, captivating stories and the magic of the seventh art. Immerse yourself in a
+                universe of films that will make you laugh, cry, reflect and get excited. From timeless classics to the
+                latest releases, we'll take you on an unforgettable cinematic journey. Get ready to discover reviews,
+                news, curiosities and everything you need to know about the world of cinema. Welcome to the ultimate
+                movie experience!</p>
+        </div>
+
+        <div class="flex flex-col justify-end items-center md:flex md:p-10 md:gap-6">
+            <h2 class="absolute flex font-bold text-6xl text-center text-white bg-violet-950 mb-4 p-2 rounded-lg">Favs
+            </h2>
+            <a class="md:w-[500px]" href="./pages/favs.html"><img src="./images/gladiador.jpg" alt=""></a>
+        </div>
+
+        <div class="flex flex-col justify-end items-center md:flex md:p-10 md:gap-6">
+            <h2 class="absolute flex font-bold text-6xl text-center text-white bg-violet-950 mb-4 p-2 rounded-lg">Movies
+            </h2>
+            <a class="md:w-[500px]" href="./pages/movies.html"><img src="./images/tron.jpg" alt=""></a>
+        </div>
+
+    </main>
+    <footer>
+        <h3 class="text-slate-300 text-xl">MindHub-Cohort N52</h3>
+    </footer>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="tailwindconfig.js"></script>
+</body>
+
+</html>
