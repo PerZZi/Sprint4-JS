@@ -24,10 +24,10 @@
     </header>
 
     <main>
-        <div id="app" class="flex flex-col gap-20 md:flex md:flex-row">
+        <div id="app" class="flex flex-col gap-20 md:flex md:flex-row lg:flex lg:flex-row">
             <template v-if="movie !== '' ">
                 <div class="">
-                    <img class="pt-3 h-[300px]" v-bind:src="'https://moviestack.onrender.com/static/'+ movie.image" alt="">
+                    <img class="pt-3 h-[300px]"  v-bind:src="movie.image &&'https://moviestack.onrender.com/static/' + movie.image + '.jpg'" alt="">
                     <table class=" h-[100px] w-[400px] border-[2px] bg-white border-black text-center justify-center">
                         <tr>
                             <td>original lenguage</td>
