@@ -16,7 +16,7 @@ const optionsVue = {
             search : "",
             selec : "genero",
             generos : [],
-            add:[],
+            favoritas:[],
         }
     },
     beforeCreate() {
@@ -46,24 +46,17 @@ const optionsVue = {
             this.filtros = aux
         },
         
-        fav(movie){
-            let favoritas = JSON.parse(localStorage.getItem('add')) || []
-            console.log(favoritas)
-            const peliFav = favoritas.some( favorita => favorita.id === movie.id)
-      
-          
-            if(!peliFav){
-            favoritas.push({id: movie.id})
-          
-            
-            } else {
-              if (peliFav){
-                favoritas = favoritas.filter(favorita => favorita.id !== movie.id)
-            
-                
-              }
+        addFavs(id) {
+            const favoritas = JSON.parse(localStorage.getItem('favoritas')) || [];
+            if (!favoritas.includes(id)) {
+                this.favoritas.push(id)
+                localStorage.setItem('favoritas', JSON.stringify(this.favoritas))
             }
-            localStorage.setItem('add', JSON.stringify(favoritas))}
+            else {
+                this.favoritas = this.favoritas.filter(movie => movie !== id)
+                localStorage.setItem('favoritos', JSON.stringify(this.favoritas))
+            }
+        },
     }
 }
 const app = createApp(optionsVue)

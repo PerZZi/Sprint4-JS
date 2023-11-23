@@ -24,12 +24,16 @@
     </header>
 
     <main>
-        <div class="flex flex-wrap p-6 gap-4 justify-center">
-            <article class="h-[350px] min-w-[300px] w-1/5 border-2 border-black rounded-lg bg-white flex flex-col gap-5 px-5 pb-5 items-center">
-                <img class="pt-3 h-[200px]" src="${urlImage1}" alt="">
-                <h2 class="text-black text-center">${objeto.title}</h2>
-                <button data-accion="borrar" data-id="${objeto.id}" class="add p-1 bg-red-800 rounded-lg text-white">Remove</button>
-            </article>
+        <div id="app" class="flex flex-wrap p-6 gap-4 justify-center">
+            <template v-if="favoritosFiltrados.length > 0" v-for="favoritas in favoritosFiltrados">
+                <article
+                    class="h-[350px] min-w-[300px] w-1/5 border-2 border-black rounded-lg bg-white flex flex-col gap-5 px-5 pb-5 items-center">
+                    <img class="pt-3 h-[200px]" v-bind:src="'https://moviestack.onrender.com/static/' + favoritas.image" alt="">
+                    <h2 class="text-black text-center">{{favoritas.title}}</h2>
+                    <button data-id="{{favoritas.id}}" v-on:click="addFavs(favoritas.id)"
+                        class="add p-1 bg-red-800 rounded-lg text-white">Remove</button>
+                </article>
+            </template>
         </div>
     </main>
 

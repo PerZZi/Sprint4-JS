@@ -45,13 +45,13 @@
                 <template v-if="filtros.length > 0" v-for="movie in filtros">
                     <article data-id={{movie.id}}
                         class="art h-[450px] min-w-[300px] w-1/5 border-2 border-black rounded-lg bg-white flex flex-col gap-5 px-5 pb-5">
-                        <img class="pt-3 h-[200px]" :src="`https://moviestack.onrender.com/static/` + movie.image"
+                        <img class="pt-3 h-[200px]" :src="'https://moviestack.onrender.com/static/' + movie.image"
                             alt="">
                         <h2 class="text-black text-center">{{movie.title}}</h2>
                         <p class="text-black text-center line-clamp-3">{{movie.overview}}...</p>
                         <a class="flex justify-center p-1 rounded-lg bg-violet-800 text-white"
                            v-bind:href="'details.html?id='+ movie.id">Details</a>
-                        <button v-on:click="fav(movie)" data-accion="add" data-id="{{movie.id}}"
+                        <button v-on:click="addFavs(movie.id)" data-accion="add" data-id="{{movie.id}}"
                             class="add p-1 bg-green-600 rounded-lg text-white">Add to Favorites</button>
                     </article>
                 </template>

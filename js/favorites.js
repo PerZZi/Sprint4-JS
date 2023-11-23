@@ -1,79 +1,53 @@
-const url = "https://moviestack.onrender.com/api/movies"
-const key = "0ff70d54-dc0b-4262-9c3d-776cb0f34dbd"
-const option = {
+const url = `https://moviestack.onrender.com/api/movies/`
+const key = `0ff70d54-dc0b-4262-9c3d-776cb0f34dbd`
+const options = {
     headers: {
-        'x-api-key': key
+        'X-API-KEY': key
     }
 }
-
 
 const { createApp } = Vue
 const optionsVue = {
     data() {
         return {
             movies: [],
-            genres: [],
-            selected:"all",
-            search:"",
-            moviesFiltradas:[],
-            favoritas:[],
-            favs:[],
-            favsfiltradas:[],
-            // fav:[],
-         
+            favoritas: [],
+            favoritosFiltrados: [],
         }
-
     },
-     beforeCreate() {
-
-            fetch(url, option)
-                .then(response => response.json())
-                .then(data => {
-                    this.movies = data.movies
-                    this.moviesFiltradas = this.movies
-                    console.log(this.movies)
-                    this.genres = [...new Set(this.movies.map(movie => movie.genres).flat())]
-                   this.favoritas=JSON.parse(localStorage.getItem("favs"))
-                   console.log(this.favoritas)
-                   this.favsfiltradas = this.movies.filter(movie =>this.favoritas.some(favorita => favorita.id === movie.id))
-                   console.log(this.favsfiltradas)
-                //    this.fav=this.favsFiltradas[0]
-                 
-                    
-
-
-                })
-                .catch(error => console.error(error))
-    },
-    methods: {
-        searchs(event){
-            this.search = event.target.value
-            this.filtrar()
-        },
-        selec(event){
-        this.selected = event.target.value
-        this.filtrar()
-        },
-        filtrar(){
-            this.moviesFiltradas = this.movies.filter(movie => movie.title.toLowerCase().includes(this.search.toLowerCase())&&(this.selected ==="all"||movie.genres.includes(this.selected)))
-        },
-        fav1(movie){
-            let favoritas = JSON.parse(localStorage.getItem('favs')) || []
-            let peliFav= favoritas.some( favorita => favorita.id === movie.id)
-            if(peliFav){
-                favoritas=favoritas.filter(favorita => favorita.id !== movie.id)
+    beforeCreate() {
+        fetch(url, options)
+            .then(response => response.json())
+            .then(data => {
+                this.movies = data.movies
+                this.favoritas = JSON.parse(localStorage.getItem('favoritas')) || []
+                console.log(this.favoritas)
+                this.favoritosFiltrados = this.movies.filter(movie => this.favoritas.some(movies => movies === movie.id))
+                console.log(this.favoritosFiltrados)
             }
-            localStorage.setItem("favs",JSON.stringify(favoritas))
-            this.favoritas= JSON.parse(localStorage.getItem("favs"))
-            console.log(this.favoritas)
-            this.favsfiltradas= this.movies.filter(movie =>this.favoritas.some(favorita => favorita.id === movie.id))
-            console.log(this.favsfiltradas)
-        
-        }
-
-
-
+            )
+            .catch(error => console.log(error))
     },
+
+    methods: {
+        addFavs(id) {
+            let nuevosFavoritos = [...this.favoritas];
+
+            if (!nuevosFavoritos.includes(id)) {
+                nuevosFavoritos.push(id);
+            } else {
+                nuevosFavoritos = nuevosFavoritos.filter(movie => movie !== id);
+                this.favoritosFiltrados = this.favoritosFiltrados.filter(movie => movie.id !== id);
+            }
+
+            this.favoritas = [...nuevosFavoritos];
+
+            localStorage.setItem('favoritas', JSON.stringify(nuevosFavoritos));
+        },
+    }
 }
+
+
+
 const app = createApp(optionsVue)
 app.mount('#app')
